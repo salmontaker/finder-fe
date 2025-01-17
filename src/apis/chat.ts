@@ -1,6 +1,6 @@
 import { Instance } from "@/utils/axios";
 
-interface ChatHistory {
+interface ChatRoom {
   userId: number;
   username: string;
   profileImage: string;
@@ -18,8 +18,8 @@ interface Chat {
   messageTime: string;
 }
 
-const getChatHistories = async (userId: number) => {
-  const { data } = await Instance.get<ChatHistory[]>("/api/chat/histories", {
+const getChatRooms = async (userId: number) => {
+  const { data } = await Instance.get<ChatRoom[]>("/api/chat/histories", {
     params: { userId: userId }
   });
 
@@ -46,5 +46,5 @@ const createChatRoom = async (userId1: number, userId2: number) => {
   return data;
 };
 
-export type { Chat, ChatHistory };
-export { createChatRoom, getChatHistories, getMessages };
+export type { Chat, ChatRoom };
+export { createChatRoom, getChatRooms, getMessages };
